@@ -2,6 +2,9 @@
 
 An interactive, high-fidelity 3D classical Molecular Dynamics (MD) simulator designed to explore soft-mode optical phonon dynamics, local electrostatic gating, and Landau-Ginzburg-Devonshire (LGD) double-well phase transitions in perovskite-structured crystals (ABO₃ / ABX₃), simulating a virtual "demon" guiding directional thermal-to-electric energy conversion.
 
+### 🌐 Live Demo
+Access the live interactive application here: **[https://wowo515151.github.io/maxwells-demon/](https://wowo515151.github.io/maxwells-demon/)**
+
 ---
 
 ## 🔬 Scientific & Theoretical Background
@@ -119,4 +122,3 @@ To run the simulator locally:
     ```bash
     npm run dev
     ```
-    Access the application live at `http://localhost:3000`.
