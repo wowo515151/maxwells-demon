@@ -1,4 +1,4 @@
-# Workflow to compile and deploy built files to the gh-pages branch
+# Workflow to compile and deploy built files using GitHub's official Pages deployment
 name: Deploy to GitHub Pages
 
 on:
@@ -6,12 +6,22 @@ on:
     branches: ["main"]
   workflow_dispatch:
 
-# Grant contents:write permission to allow pushing built assets to gh-pages branch
+# Grant necessary permissions for official GitHub Pages deployment
 permissions:
-  contents: write
+  contents: read
+  pages: write
+  id-token: write
+
+# Allow one concurrent deployment
+concurrency:
+  group: "pages"
+  cancel-in-progress: true
 
 jobs:
   build-and-deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -29,9 +39,15 @@ jobs:
       - name: Build
         run: npm run build
 
-      - name: Deploy to gh-pages branch
-        uses: peaceiris/actions-gh-pages@v4
+      - name: Setup Pages
+        uses: actions/configure-pages@v5
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./dist
+          path: './dist'
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
 
