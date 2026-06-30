@@ -94,7 +94,7 @@ Add deploy and pre-deploy hooks under the `"scripts"` field of your `package.jso
 ```
 
 ### Step 4: Run Deploy
-Exectute the deployment script in your terminal:
+Execute the deployment script in your terminal:
 ```bash
 npm run deploy
 ```
